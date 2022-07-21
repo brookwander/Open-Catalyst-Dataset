@@ -29,7 +29,7 @@ from .constants import MAX_MILLER
 import sys
 import time
 
-def enumerate_surfaces_for_saving(bulk_atoms, max_miller=MAX_MILLER):
+def enumerate_surfaces_for_saving(bulk_atoms, max_miller=MAX_MILLER, symmetrize=False):
     '''
     Enumerate all the symmetrically distinct surfaces of a bulk structure. It
     will not enumerate surfaces with Miller indices above the `max_miller`
@@ -64,7 +64,7 @@ def enumerate_surfaces_for_saving(bulk_atoms, max_miller=MAX_MILLER):
         slabs = slab_gen.get_slabs(tol=0.3,
                                    bonds=None,
                                    max_broken_bonds=0,
-                                   symmetrize=False)
+                                   symmetrize=symmetrize)
 
         # If the bottoms of the slabs are different than the tops, then we want
         # to consider them, too
